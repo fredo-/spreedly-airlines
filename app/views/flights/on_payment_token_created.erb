@@ -1,1 +1,20 @@
-token is back
+<h1>Confirm purchase</h1>
+
+<h3> token: <%= @spreedly_token %></h3>
+
+<form action="/confirm_transaction" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <input type="hidden" name="payment_method_token" value="<%= @spreedly_token %>" id="payment_method_token">
+  <label for="retain_payment">
+    <input id="retain_payment" type="checkbox" name="retain_payment">
+    Retain payment
+  </label>
+
+  <label for="forward_to_receiver">
+    <input id="forward_to_receiver" type="checkbox" name="forward_to_receiver">
+    Forward payment to test receiver
+  </label>
+
+  <br>
+  <input type="submit" value="Confirm">
+</form>

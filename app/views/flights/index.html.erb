@@ -1,0 +1,39 @@
+<h1>Spreedly flights</h1>
+
+<p>Pick a flight!</p>
+<form action="/checkout" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+  <input id="AA" type="radio" name="airlines" value="AA">
+  <label for="AA">AA</label>
+  <br>
+
+  <input id="UA" type="radio" name="airlines" value="UA">
+  <label for="UA">UA</label>
+  <br>
+
+  <input id="Delta" type="radio" name="airlines" value="Delta">
+  <label for="Delta">Delta</label>
+
+  <br><br>
+  <input type="submit" value="Select flight">
+</form>
+
+<h2>Retained payments:</h2>
+<table border="1">
+  <tr>
+    <th>User's Name</th>
+    <th>Payment Token</th>
+    <th>Payment method type</th>
+  </tr>
+
+  <% @payment_methods['payment_methods'].each do |payment| %>
+    <tr>
+      <td><%= payment['full_name'] %></td>
+      <td><%= payment['token'] %></td>
+      <td><%= payment['payment_method_type'] %></td>
+    </tr>
+  <% end %>
+</table>
+
+<br>

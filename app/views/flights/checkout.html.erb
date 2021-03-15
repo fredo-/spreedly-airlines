@@ -1,0 +1,31 @@
+
+
+<script src="https://core.spreedly.com/iframe/express-2.min.js"></script>
+<script>
+    const envKey = "GrKrufAoRYCmvuv8PLD7A4Vouvi";
+    SpreedlyExpress.init(envKey, {
+        "amount": "$9.83",
+        "company_name": "Fredo Inc",
+        "sidebar_top_description": "<%= @flight_selected %>",
+        "sidebar_bottom_description": "Your order total today",
+        "full_name": "Awesome Name"
+    }, {
+        "email": "customer@gmail.com"
+    });
+
+    SpreedlyExpress.onPaymentMethod(function(token, paymentMethod) {
+        // Send requisite payment method info to backend
+        var tokenField = document.getElementById("payment_method_token");
+
+        tokenField.setAttribute("value", token);
+
+        var masterForm = document.getElementById('payment-form');
+        masterForm.submit();
+    });
+</script>
+
+<form id="payment-form" action="/receive_spreedly_token" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <input type="hidden" name="payment_method_token" id="payment_method_token">
+  <input type="button" value="Enter Payment Info" onclick="SpreedlyExpress.openView();">
+</form>
