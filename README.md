@@ -1,9 +1,9 @@
 # Spreedly-airlines
 
-# Spreedly's Documentation
+## Spreedly's Documentation
 https://docs.spreedly.com/
 
-# Set up
+## Set up
 1. clone repo locally
 1. set environment variables in your shell with the following names:
     ```editorconfig
@@ -13,7 +13,7 @@ https://docs.spreedly.com/
    export TEST_GATEWAY_TOKEN=[GET_FROM_SPREEDLY]
    export TEST_RECEIVER_TOKEN=[GET_FROM_SPREEDLY]
     ```
-# Features
+## Features
 1. Home page
    1. Select a flight
    1. See retained payments
